@@ -254,6 +254,22 @@ public class Utility {
         return false;
     }
 
+    /*
+     * Purpose: method for finding square root using newton's law
+     * c input from user
+     * returns the square root
+     */
+    public double findSquareRootUsingNewtonsMethod(int c) {
+        double t, epsilon;
+        t = c;  // estimate of the square root of c
+        epsilon = 1e-15; // relative error tolerance
+        // repeatedly apply Newton update step until desired precision is achieved
+        while (Math.abs(t - c / t) > epsilon * t) {
+            t = (c / t + t) / 2.0;
+        }
+        return t;
+    }
+
 
 
     public static void monthDay(int month, int day) {
