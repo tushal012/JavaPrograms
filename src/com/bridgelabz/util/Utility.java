@@ -1,8 +1,13 @@
 package com.bridgelabz.util;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Arrays;
 
 public class Utility {
+    private BufferedReader br;
 
     /**
      * Purpose: method for finding year is leap or not
@@ -279,6 +284,44 @@ public class Utility {
                 || (month == 6 && day >= 1 && day <= 20);
 
         System.out.println(isSpring);
+    }
+
+    //Take Integer Input
+    public int inputInteger(){
+        try{
+            try{
+                
+                return Integer.parseInt(br.readLine());
+            }
+            catch(NumberFormatException nfe){
+                System.out.println(nfe.getMessage());
+            }
+        }catch(IOException ioe){
+            System.out.println(ioe.getMessage());
+        }
+        return 0;
+    }
+
+    public String inputString(){
+        try{
+            return br.readLine();
+        }
+        catch(IOException ioe){
+            System.out.println(ioe.getMessage());
+        }
+        return "";
+    }
+
+    public void writeToFile(String data,String fileName)throws Exception{
+        File file = new File(fileName);
+        if (!file.exists()) {
+            file.createNewFile();
+        }
+        FileWriter writer = new FileWriter(file);
+        // Writes the content to the file
+        writer.write(data);
+        writer.flush();
+        writer.close();
     }
 
 
