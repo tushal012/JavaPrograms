@@ -421,6 +421,48 @@ public class Utility {
         writer.close();
     }
 
+    /**
+     * Purpose: method for generating random number between range
+     *
+     * @param range taken from user
+     * @return return the random number
+     */
+    public int randomNumber(int range) {
+
+        return (int) (Math.random() * range);
+    }
+
+    /**
+     * Purpose: for finding distinct coupon
+     *
+     * Identifier: P8DistinctCoupon
+     *
+     * @param range for number of coupon generated
+     * @return return the count of times run loop to generate each distinct coupon
+     */
+
+    public int distinctCoupon(int range) {
+        boolean[] arr = new boolean[range];
+        int count = 0;
+        int distinct = 0;
+        while (distinct < range) {
+            int value = randomNumber(range);
+            System.out.print(value + " ");
+            if (!arr[value]) {
+                distinct++;
+                arr[value] = true;
+                System.out.print(arr[value] + " ");
+            }
+
+            count++;
+        }
+        System.out.println();
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print("index " + i + " values " + arr[i] + "\n");
+        }
+        return count;
+
+    }
 
 
 
